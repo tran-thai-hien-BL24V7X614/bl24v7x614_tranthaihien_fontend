@@ -41,6 +41,19 @@
         </h4>
 
         <ContactCard :contact="activeContact" />
+        <ContactCard v-if="activeContact" :contact="activeContact" />
+
+<router-link
+  v-if="activeContact"
+  :to="{
+    name: 'contact.edit',
+    params: { id: activeContact._id },
+  }"
+>
+  <span class="mt-2 badge badge-warning">
+    <i class="fas fa-edit"></i> Hiệu chỉnh
+  </span>
+</router-link>
       </div>
     </div>
   </div>
@@ -133,6 +146,9 @@ export default {
     this.refreshList();
   },
 };
+
+
+
 </script>
 
 <style scoped>
